@@ -2,11 +2,10 @@
 
 This project implements a real-time queue analysis system using a dual-view camera setup. The system detects individuals, tracks them across camera angles using appearance-based embeddings, and optionally estimates their waiting time in the queue. It was developed as part of the Applied Computer Vision portfolio assignment.
 
-## 🎯 Objective
-
+##  Objective
 To dynamically count the number of people waiting in an amusement park queue using a multi-camera system, avoiding duplicate counts and optionally showing the estimated waiting time for each person.
 
-## 📦 Requirements
+##  Requirements
 
 Install the necessary packages using:
 
@@ -16,7 +15,7 @@ pip install -r requirements.txt
 
 Additionally, make sure to install [TorchReID](https://github.com/KaiyangZhou/deep-person-reid) and download the pretrained ReID model [resnet50](https://drive.google.com/file/d/1yiBteqgIZoOeywE8AhGmEQl7FTVwrQmf/view) before running the code.
 
-## 🎥 Input Data
+##  Input Data
 
 The system takes as input a **stitched dual-view video** which combines:
 
@@ -25,11 +24,11 @@ The system takes as input a **stitched dual-view video** which combines:
 
 The queue starts from the left side and progresses toward the right, forming a U-shaped path across the two camera views.
 
-## 📐 Queue Detection Logic
+##  Queue Detection Logic
 
 The queue is defined based on each person's location over the x axis.
 
-## ⚙️ Implementation Overview
+## ⚙ Implementation Overview
 
 ### 1. Frame Extraction
 
@@ -65,14 +64,14 @@ If a person appears in both right and left views, their embedding vectors are co
 - The ETA is displayed inside each bounding box.
 - Our approach can update average waiting time with each person who exits the queue, improving accuracy over time.
 
-## 📊 Output
+##  Output
 
 - Real-time bounding boxes for all detected individuals
 - Cross-camera consistent person IDs
 - ETA values rendered on screen
 - Dynamic people count inside the queue zone
 
-## ▶️ How to Run
+##  How to Run
 
 1. Place the video (`first-video.mp4`) in the project directory (`exercise_2_queue_analysis`).
 
@@ -88,7 +87,7 @@ If a person appears in both right and left views, their embedding vectors are co
    jupyter notebook main.ipynb
    ```
 
-## ⚙️ Parameters You Can Tune
+##  Parameters You Can Tune
 
 | Parameter              | Description                                                           |
 | ---------------------- | --------------------------------------------------------------------- |
@@ -98,29 +97,28 @@ If a person appears in both right and left views, their embedding vectors are co
 | `exit_boundary_x`      | X-coordinate threshold for exit detection (default: 1910)             |
 | `embedding_history`    | Controls how many previous features are stored per ID (default: 1000) |
 
-## 📉 Limitations
+##  Limitations
 
 - Cross-camera matching may fail if people are heavily occluded or partially visible.
 - ETA assumes a continuous and stable queue without large gaps or batching.
 - System relies on visual appearance and may fail with visually similar individuals.
 
-## 🎬 Demo: Queue Analysis Output
+##  Demo: Queue Analysis Output
 
 The project includes a demo video that shows the final output of our queue analysis system.
 
-### 🔹 What’s Shown in the Demo
+###  What’s Shown in the Demo
 
 - Real-time detection of individuals across two camera views
 - Bounding boxes with consistent person IDs
 - Estimated Time of Arrival (ETA) shown above each bounding box
 - Live queue count tracking
 
-![Queue Analysis Example](demo/example.png)
 
-### ▶️ Watch the Output
+### ▶ Watch the Output
 
 You can view the demo output here:
 
-📺[Click to watch demo video](https://drive.google.com/file/d/178TXhMfKqrzMf6-Fepgv21G8GMcHcPX0/view)
+[Click to watch demo video](https://drive.google.com/file/d/178TXhMfKqrzMf6-Fepgv21G8GMcHcPX0/view)
 
 > The video showcases detections across both camera views, ID consistency, and ETA estimation.
